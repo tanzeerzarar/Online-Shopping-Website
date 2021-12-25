@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="cx/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is item details page</title> 
+</head>
+<body>
+	<section >
+
+
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<div class="container text-center mb-3">
+					<!-- image code here - from profile.html -->
+					</div>
+					<h1 class="text-center" th:text="${seller.shopName}" ></h1>
+		
+		<!-- table -->				
+		<table class="table text-center">
+		  <thead>
+		
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="col">#Shop-Id</th>
+		      <th scope="col"><span th:text="${seller.shopId}"></span></th>
+		    </tr>
+
+		    <tr>
+		      <th scope="col">Owner Name</th>
+		      <th scope="col"><span th:text="${seller.shopOwner.name}"></span></th>
+		    </tr>
+		  
+		    <tr>
+		      <th scope="col">Mall Name</th>
+		      <th scope="col"><span th:text="${seller.mall.mallName}"></span></th>
+		    </tr>
+		    <tr>
+		      <th scope="col">Shop Category</th>
+		      <th scope="col"><span th:text="${seller.shopCategory}"></span></th>
+		    </tr>		  
+		    <tr>
+		      <th scope="col">Email Id</th>
+		      <th scope="col"><span th:text="${seller.shopOwner.email}"></span></th>
+		    </tr>		  
+		    <tr>
+		      <th scope="col">Phone Number</th>
+		      <th scope="col"><span th:text="${seller.shopOwner.phone}"></span></th>
+		    </tr>		  
+		
+		  </tbody>
+		</table>
+		<div class="container text-center">
+			<a href="#" th:onclick="|reportSeller()|" class="btn btn-danger btn-sm">Report</a>
+		</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+</body>
+</html>

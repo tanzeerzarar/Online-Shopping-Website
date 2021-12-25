@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>k</title> 
+</head>
+<body>
+	<section >
+
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card mt-3 bg-dark">
+					
+					
+						<div class="container text-center">
+							<img src="" th:src="@{/img/edit.png}" style="width:80px" />
+						</div>
+						<h1 class="text-center text-white">Register as Seller</h1>
+						<form  action="#" th:action="@{/do_signup_seller}" method="post" th:object="${user}">
+							
+							<!-- name field -->
+							<div class="form-group">
+							    <label for="exampleInputName">Your Name</label>
+							    <input type="text" 
+							    class="form-control " 
+							    th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}" 
+							    id="exampleInputName" 
+							    aria-describedby="emailHelp" 
+							    placeholder="Enter Name" 
+							    required 
+							    th:value="${user.name}" 
+							    name="name"
+							    />
+								 <div class="invalid-feedback" th:each="e:${#fields.errors('name')}" th:text="${e}" >
+							      
+							     </div>
+							</div>
+							<!-- email field -->
+							<div class="form-group">
+							    <label for="exampleInputName" class="form-label">Email address</label>
+							    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" th:value="${user.email}" name="email">
+							</div>
+
+							<!-- phone field -->
+							<div class="form-group">
+							    <label for="exampleInputPhone" class="form-label">Your Phone</label>
+							    <input type="text" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp" placeholder="Enter Phone" name="phone">
+							</div>
+
+							<!-- password field -->
+							<div class="form-group">
+							    <label for="exampleInputPassword" class="form-label">Set Your Password</label>
+							    <input type="password" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp" placeholder="Enter Password" name="password">
+							</div>
+														
+							<div class="form-group form-check mt-2 text-white">
+								<label for="agreement">Agree terms and conditions</label>
+								<input type="checkbox" name="agreement" class="form-check-input" id="agreement">
+							</div>
+							
+							<!-- submit button -->
+							<div class="top-buffer">	
+								<div class="container text-center" >
+									<button class="btn bg-primary text-white" type="submit">Submit</button>
+									<button class="btn bg-warning text-white" type="reset">Reset</button>
+								</div>
+
+							</div>
+							
+						</form>
+							<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert mt-3" role="alert">
+							  <p class="text-center" th:text="${session.message.content}"><p/>
+							  <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+						
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</section>
+</body>
+</html>

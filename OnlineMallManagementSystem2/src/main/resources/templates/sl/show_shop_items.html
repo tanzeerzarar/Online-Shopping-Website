@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+		<div class="card mr-3">
+			<div class="card-body mr-3">
+				<h1 class="text-center">Your Shop Items</h1>
+				
+				<table class="table">
+				  
+				  <thead>
+				    <tr>
+				      <th scope="col">#Item-ID</th>
+				      <th scope="col">Item Name</th>
+				      <th scope="col">Price</th>
+				    </tr>
+				  </thead>
+				  
+				  <tbody>
+				    <tr th:each="c:${items}">
+				      <th scope="row" th:text="${c.id}"></th>
+						      
+				      <td ><a href="#" th:href="@{'/sl/'+${c.id}+'/employee'}">
+				      <span th:text="${c.name}"></span></a></td>
+						
+				      <td >&#8377;
+						<span th:text="${c.price}"></span></td>
+				      
+				      <td >
+				      	<a href="#" th:onclick="|deleteItem(${c.id})|" class="btn btn-danger btn-sm">Remove</a>
+				      </td>				         
+				         
+				    </tr>
+				    
+				  </tbody>
+				  
+				</table>
+
+				<!-- pagination -->
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">										<!-- sl/4000/shopitems/0 -->
+				    <li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/sl/'+${shopid}+'/shopitems/'+${currentPage-1}}" class="page-link" href="#">Previous</a></li>
+				    <li th:classappend="${currentPage==i-1?'active':''}" th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/sl/'+${shopid}+'/shopitems/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+				    <li th:if="${currentPage+1 != totalPages}" class="page-item"><a th:href="@{'/sl/'+${shopid}+'/shopitems/'+${currentPage+1}}" class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+				
+				<!-- pagination end -->				
+
+
+			</div>
+					<div class="container text-center">
+			<a href="#" th:href="@{'/sl/'+${user.id}+'/additem/'+${shopid}}" class="btn btn-info mb-3">Add item to shop</a>
+		</div>
+			
+
+		</div>
+
+	</section>
+</body>
+</html>

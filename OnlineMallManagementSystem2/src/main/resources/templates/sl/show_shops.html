@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+		<div class="card mr-3">
+			<div class="card-body mr-3">
+				<h1 class="text-center">Your Shops</h1>
+				
+				<table class="table">
+				  
+				  <thead>
+				    <tr>
+				      <th scope="col">#Shop-ID</th>
+				      <th scope="col">Shop Name</th>
+				      <th scope="col">Shop Category</th>
+				      <th scope="col">Mall Name</th>
+				      <th scope="col">Employee List</th>
+				      <th scope="col">Item List</th>
+				      <th scope="col">Action</th>
+				    </tr>
+				  </thead>
+				  
+				  <tbody>
+				    <tr th:each="c:${items}">
+				      <th scope="row" th:text="${c.shopId}"></th>
+						      
+				      <td ><span th:text="${c.shopName}"></span></td>
+						
+				      <td th:text="${c.shopCategory}"></td>
+
+						<td th:text="${c.mall.mallName}"></td>
+
+				      <td><a href="#" th:href="@{'/sl/'+${c.shopId}+'/shop-employees/0'}">
+				      	<span th:text="'Manage your employees'"></span></a></td>
+				      
+				      <td><a href="#" th:href="@{'/sl/'+${c.shopId}+'/shopitems/0'}">
+				      	<span th:text="'Manage your items'"></span></a></td>
+				         
+				       <td ><a href="#" th:onclick="|deleteShop(${c.shopId})|" class="btn btn-danger btn-sm"><span>Close</span></a>
+				      	</td >			         
+				         
+				    </tr>
+				    
+				  </tbody>
+				  
+				</table>
+
+				<!-- pagination -->
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/cx/show-shops/'+${currentPage-1}}" class="page-link" href="#">Previous</a></li>
+				    <li th:classappend="${currentPage==i-1?'active':''}" th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/cx/show-shops/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+				    <li th:if="${currentPage+1 != totalPages}" class="page-item"><a th:href="@{'/cx/show-shops/'+${currentPage+1}}" class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+				
+				<!-- pagination end -->				
+
+			<!-- request create button -->
+			
+			<div class="container text-center">
+				<a href="#" th:href="@{'/sl/'+${user.id}+'/requestshop/'}" class="btn btn-info mb-3">Request new shop</a>
+			</div>
+			<!-- request create button -->
+
+			</div>
+
+		</div>
+
+	</section>
+</body>
+</html>

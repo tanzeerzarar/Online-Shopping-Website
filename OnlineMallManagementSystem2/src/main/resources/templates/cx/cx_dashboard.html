@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="cx/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+		<div class="card mr-3">
+			<div class="card-body mr-3">
+				<h1 class="text-center">Explore here!</h1>
+				
+				<table class="table">
+				  
+				  <thead>
+				    <tr>
+				      <th scope="col">#Item-ID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Price</th>
+				      <th scope="col">Seller</th>
+				      <th scope="col">Buy</th>
+				    </tr>
+				  </thead>
+				  
+				  <tbody>
+				    <tr th:each="c:${items}">
+				      <th scope="row" th:text="${c.id}"></th>
+				      
+				      <td>
+				      	<a href="#" th:href="@{'/cx/'+${c.id}+'/item'}">
+				      	<span th:text="${c.name}"></span></a></td>
+				      <td >&#8377;
+						<span th:text="${c.price}"></span>
+						</td>
+				      <td>
+				      	<a href="#" th:href="@{'/cx/'+${c.shop.shopId}+'/seller'}">
+				      	<span th:text="${c.shop.shopName}"></span></a></td>
+				      	
+				      	<td ><a href="#" th:href="@{'/cx/update-cart/'+${c.id}}" class="btn btn-primary btn-sm">Add to cart</a>
+				      	</td >			         
+				    </tr>
+				    
+				  </tbody>
+				  
+				</table>
+
+				<!-- pagination -->	
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/cx/dashboard/'+${currentPage-1}}" class="page-link" href="#">Previous</a></li>
+				    <li th:classappend="${currentPage==i-1?'active':''}" th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a th:href="@{'/cx/dashboard/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+				    <li th:if="${currentPage+1 != totalPages}" class="page-item"><a th:href="@{'/cx/dashboard/'+${currentPage+1}}" class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+				
+				<!-- pagination end -->				
+
+
+			</div>
+
+		</div>
+	
+	</section>
+</body>
+</html>

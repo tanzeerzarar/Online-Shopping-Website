@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is Welcome page</title> 
+</head>
+<body>
+	<section class="banner d-flex justify-content-center align-items-center">
+		<div class="container">		
+		<div class="text-center">
+			<h1>TanishQ-Mall</h1>
+			<p>Welcome to online mall</p>
+			<a href="#" th:href="@{/home}" class="btn bg-dark btn-lg text-white">Enter the Mall</a>
+		</div>
+		</div>
+		
+	</section>
+</body>
+</html>

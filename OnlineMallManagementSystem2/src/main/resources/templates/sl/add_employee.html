@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+
+		<div class="card mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Fill Employee Details</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							
+							<form action="#"
+								th:object="${contact}"
+								method="post"
+								enctype="multipart/form-data"
+								th:action="@{'/sl/process-add-employee/'+${dob1}}"
+								class="mt-2" >
+		
+								<!-- id print-->
+								<div class="input-group">
+
+									<input type="hidden" id="shop" name="shop" th:value="${contact.shop.shopId}" placeholder="Shop" class="form-control" />
+								</div>
+																
+								<!-- name -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input required type="text" id="name" name="name"  placeholder="Employee name" class="form-control" />
+								</div>
+								
+								<!-- designation -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input required type="text" id="designation" name="designation"  placeholder="Designation" class="form-control" />
+								</div>
+								
+								<!-- address -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input required type="text" id="address" name="address"  placeholder="Employee address" class="form-control" />
+								</div>
+								
+								<!-- price -->
+								<div class="input-group mt-3 mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-inr" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input type="number" id="salary" name="salary"  placeholder="Enter monthly Salary" class="form-control" />
+								</div>
+
+								
+
+								<!-- dob date -->										
+								<div class=" datepicker  mt-3 mt-3">
+											<a><i class="fa fa-calendar" aria-hidden="true"></i>  Set DOB</a>
+									<input  placeholder="Date of birth"  name="dob1" type="date" value="1900-01-01" id="dob1" class="form-control">
+								</div>
+								
+								<!-- submit button -->						
+								<div class="container text-center mt-5" >
+									<button class="btn btn-outline-primary" >Add</button>
+								</div>
+
+															
+							</form>
+						</div>
+						
+					
+					</div>
+				
+				</div>
+			
+			
+			</div>
+		
+		
+		</div>
+
+	
+	</section>
+</body>
+</html>

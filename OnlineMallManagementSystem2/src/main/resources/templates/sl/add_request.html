@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+
+		<div class="card mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Apply for new shop</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							
+							<form action="#"
+								th:object="${sr}"
+								method="post"
+								enctype="multipart/form-data"
+								th:action="@{'/sl/process-request/'+${shopc}+'/'+${mall}+'/'+${shopname}}"
+								class="mt-2" >
+																		
+								<!-- shop-name -->
+								<div class="input-group mt-3">Shop Name
+									<input type="text" id="shopname" name="shopname"/> 						
+								</div>		
+																						
+								<!--shop category -->
+								<div class="input-group mt-3">
+									<label for="shopc">Choose shop category:  |</label>
+										
+									<select name="shopc" id="shopc">
+									  <option value="ELECTRICAL">ELECTRICAL</option>
+									  <option value="ELECTRONICS">ELECTRONICS</option>
+									  <option value="GROCERY">GROCERY</option>
+									  <option value="CROCKERY">CROCKERY</option>
+									</select>
+								</div>
+								
+								<!--mall -->
+								<div class="input-group mt-3">
+									<label for="mall">Choose mall:  |</label>
+										
+									<select name="mall" id="mall">
+									  <option value="TanishQ">TanishQ-Mall</option>
+									  <option value="DLF">DLF-Mall</option>
+									</select>
+								</div>
+								
+								<!-- submit button -->						
+								<div class="container text-center" >
+									<button class="btn btn-outline-primary" >Send Request</button>
+								</div>
+
+															
+							</form>
+						</div>
+						
+					
+					</div>
+				
+				</div>
+			
+			
+			</div>
+		
+		
+		</div>
+
+	
+	</section>
+</body>
+</html>

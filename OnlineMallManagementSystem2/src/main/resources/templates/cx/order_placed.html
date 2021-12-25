@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="cx/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is profile page</title> 
+</head>
+<body>
+	<section >
+
+
+		<div class="card mr-3">
+			<div class="card-body mr-3">
+				<h1 class="text-center">Your Order Details</h1>
+				
+				<table class="table">
+				  
+				  <thead>
+				    <tr>
+				      <th scope="col">Item-Name</th>
+				      <th scope="col">Price</th>
+				    </tr>
+				  </thead>
+				  
+				  <tbody>
+				  
+				    <tr th:each="c:${list}">
+				      <th>
+				      <span th:text="${c.name}"></span></th> 
+				      <td >&#8377; <span th:text="${c.price}"></span></td>
+				      			
+				    </tr>
+				    				    
+				  </tbody>
+				  
+				</table>
+
+
+			</div>
+
+		</div>
+		
+		<div class="card">
+		
+			<h3 class="text-center" th:text="'Total: '+${od.total}"></h3>
+
+		</div>
+
+		<div class="card mt-3">
+			<h4 class="text-center" th:text="'Delivery address: '+${user.address}"></h4>
+		</div>
+
+		<div class="card mt-3 text-center">
+			<h4 th:text="'Mode of Payment:- '+${od.paymentType}"></h4>  
+		</div>
+		<div class="card mt-3 text-center">
+			<h4 th:text="'Order Status:- '+${od.orderStatus}"></h4>  
+		</div>		
+	</section>
+</body>
+</html>

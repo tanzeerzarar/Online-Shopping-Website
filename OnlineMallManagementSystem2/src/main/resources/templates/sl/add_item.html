@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is user page</title> 
+</head>
+<body>
+	<section>
+
+		<div class="card mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Add Product</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							
+							<form action="#"
+								th:object="${contact}"
+								method="post"
+								enctype="multipart/form-data"
+								th:action="@{'/sl/process-additem/'+${itemc}+'/'+${mdate}+'/'+${edate}}"
+								class="mt-2" >
+		
+								<!-- shop-->
+								<div class="input-group">
+
+									<input type="hidden" id="shop" name="shop" th:value="${contact.shop.shopId}" placeholder="Shop" class="form-control" />
+								</div>
+																
+								<!-- name -->
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input required type="text" id="name" name="name"  placeholder="Product name" class="form-control" />
+								</div>
+								
+								<!-- price -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-inr" aria-hidden="true"></i>
+										
+										</div>
+									</div>
+									<input type="number" id="price" name="price"  placeholder="Enter Price" class="form-control" />
+								</div>
+								
+								<div class="w-100">
+								<!-- manufacturing date -->										
+								<div class=" mt-3">
+											<a><i class="fa fa-calendar" aria-hidden="true"></i>  Choose manufacturing date</a>
+									<input  value="1900-01-01" name="mdate" type="date" id="mdate">
+								</div></div>
+										<div class="w-100">
+								<!-- expiry date -->										
+								<div class="  mt-3">
+									
+											<a><i class="fa fa-calendar" ></i>  Choose expiry date</a>
+										
+									<input value="1900-01-01" name="edate" type="date" id="edate">
+								</div></div>
+										
+																							
+								<!-- category -->
+								<div class="input-group mt-3">
+									<label for="itemc">Choose item category:  |</label>
+										
+									<select name="itemc" id="itemc">
+									  <option value="ELECTRICAL">ELECTRICAL</option>
+									  <option value="ELECTRONICS">ELECTRONICS</option>
+									  <option value="GROCERY">GROCERY</option>
+									  <option value="CROCKERY">CROCKERY</option>
+									  <option value="ACCESSORIES">ACCESSORIES</option>
+									  <option value="OTHERS">OTHERS</option>
+									</select>
+								</div>
+								<!-- image 
+								<div class="customer-file mt-2">Item Picture
+									<input type="file" id="image" name="profileImage"/> 						
+								</div>		<!-- image -->
+								
+								<!-- submit button -->						
+								<div class="container text-center" >
+									<button class="btn btn-outline-primary" >Add</button>
+								</div>
+
+															
+							</form>
+						</div>
+						
+					
+					</div>
+				
+				</div>
+			
+			
+			</div>
+		
+		
+		</div>
+
+	
+	</section>
+</body>
+</html>

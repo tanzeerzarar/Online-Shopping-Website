@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is order details page</title> 
+</head>
+<body>
+	<section >
+
+
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<div class="container text-center mb-3">
+					<!-- image code here - from profile.html -->
+					</div>
+					<h1 class="text-center" th:text="'#OrderId-'+${orderDetails.id}" ></h1>
+		
+		<!-- table -->				
+		<table class="table text-center">
+		  <thead>
+		
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="col">Date of purchase</th>
+		      <th scope="col"><span th:text="${orderDetails.dateOfPurchase}"></span></th>
+		    </tr>
+		  
+		    <tr>
+				<th scope="col">Total Amount</th>
+		      	<th scope="col"><span th:text="${orderDetails.total}"></span></th>
+		    </tr>
+		    
+		    <tr>
+				<th scope="col">Payment Mode</th>
+		      	<th scope="col"><span th:text="${orderDetails.paymentType}"></span></th>
+		    </tr>
+		    
+		    <tr>
+				<th scope="col">Status of the Order</th>
+		      	<th scope="col"><span th:text="${orderDetails.orderStatus}"></span></th>
+		    </tr>
+		    <tr>
+				<th scope="col">Seller</th>
+		      	<th scope="col"><span th:text="${orderDetails.shop.shopName}"></span></th>
+		    </tr>
+		
+		  </tbody>
+		</table>
+
+				</div>
+			</div>
+		</div>
+
+</section>
+	<section class="mt-3">
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+				<h3 class="text-center">List of items</h3>
+				
+				<table class="table text-center" border="1">
+				  
+				  <thead>
+				    <tr>
+				      <th scope="col">Name</th>
+				      <th scope="col">Price</th>
+				    </tr>
+				  </thead>
+				  
+				  <tbody>
+				    <tr th:each="itm:${list}">
+
+				      <td>
+				      	<span th:text="${itm.name}"></span></td>
+				      	
+				      <td >&#8377;
+						<span th:text="${itm.price}"></span></td>
+				      				         
+				    </tr>
+				    
+				  </tbody>
+				  
+				</table>
+
+
+			</div>
+
+		</div>
+		</div>
+
+	</section>
+	
+	<!-- order status bar 
+	<section>
+	<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bg-white p-2 border rounded px-3">
+                <div class="d-flex flex-row justify-content-between align-items-center order">
+                    <div class="d-flex flex-column order-details"><span>Your order has been delivered</span><span class="date">by DHFL on 21 Jan, 2020</span></div>
+                    <div class="tracking-details"><button class="btn btn-outline-primary btn-sm" type="button">Track order details</button></div>
+                </div>
+                <hr class="divider mb-4">
+                <div class="d-flex flex-row justify-content-between align-items-center align-content-center"><span class="dot"></span>
+                    <hr class="flex-fill track-line"><span class="dot"></span>
+                    <hr class="flex-fill track-line"><span class="dot"></span>
+                    <hr class="flex-fill track-line"><span class="dot"></span>
+                    <hr class="flex-fill track-line"><span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span></div>
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                    <div class="d-flex flex-column align-items-start"><span>15 Mar</span><span>Order placed</span></div>
+                    <div class="d-flex flex-column justify-content-center"><span>15 Mar</span><span>Order placed</span></div>
+                    <div class="d-flex flex-column justify-content-center align-items-center"><span>15 Mar</span><span>Order Dispatched</span></div>
+                    <div class="d-flex flex-column align-items-center"><span>15 Mar</span><span>Out for delivery</span></div>
+                    <div class="d-flex flex-column align-items-end"><span>15 Mar</span><span>Delivered</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+	
+	</section>-->
+</body>
+</html>

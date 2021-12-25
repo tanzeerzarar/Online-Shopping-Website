@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="sl/base::layout(~{::section})">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>This is update page</title> 
+</head>
+<body>
+	<section >
+
+		<div class="card mr-3 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Update Your Account Details</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-10 offset-md-1">
+							
+							<form action="#"
+								th:object="${customer}"
+								method="post"
+								enctype="multipart/form-data"
+								th:action="@{/sl/process-update}"
+								class="mt-2" >
+								
+								<input type="hidden" th:value="${customer.id}" name="id"></input>
+								
+								<!-- first name -->
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-user-alt"></i>
+										
+										</div>
+									</div>
+									<input th:value="${customer.name}" required type="text" id="firstName" name="name" placeholder="Enter name Here" class="form-control" />
+								</div>
+								
+								
+								<!-- phone -->
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-phone"></i>
+										
+										</div>
+									</div>
+									<input th:value="${customer.phone}" type="text" id="phone" name="phone" placeholder="Enter Phone Number" class="form-control" />
+								</div>		
+													
+								<!-- email -->
+								<div class="input-group">
+									<input type="hidden" th:value="${customer.email}" id="email" name="email" placeholder="Enter Email" class="form-control" />
+								</div>	
+								
+											
+								<!-- dob -->
+								<div class=" datepicker  mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text ">
+											<i class="fa fa-calendar" aria-hidden="true"></i>
+										</div>
+									</div>
+									<input  placeholder="Set your date of birth" th:value="${customer.dob}" name="dob1" type="date" id="example" class="form-control">
+								</div>
+
+
+								<!-- image -->
+								<div class="container text-center">
+									<img style="width:250px; height:250px;" class="img-fluid my_profile_picture" src="" th:src="@{'/img/'+${customer.imageURL}}" />
+								</div>
+								<div class="customer-file">Choose new Profile Picture
+								
+								<input type="file" id="image" name="profileImage"/> 						
+								</div>			
+								
+								<!-- button save -->				
+								<div class="container text-center" >
+									<button class="btn btn-outline-primary" >Save</button>
+								</div>
+
+															
+							</form>
+						</div>
+						
+					
+					</div>
+				
+				</div>
+			
+			
+			</div>
+		
+		
+		</div>
+
+		
+	</section>
+</body>
+</html>

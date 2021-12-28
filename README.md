@@ -13,3 +13,5 @@ seller can change the status of the order when it is packed/shipped.)
 3. Courier service provider (they can change the status of the orders they have received like on-the-way or delivered.)
 
 4. Mall Admin (they can approve the requests of the sellers who want to create new shops in this mall.)
+
+Contact me: tanzeerzarar@gmail.com

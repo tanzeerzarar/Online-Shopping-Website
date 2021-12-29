@@ -14,4 +14,4 @@ seller can change the status of the order when it is packed/shipped.)
 
 4. Mall Admin (they can approve the requests of the sellers who want to create new shops in this mall.)
 
-Contact me: tanzeerzarar@gmail.com
+Contact me: tanzeer.jmi@gmail.com
